@@ -8,7 +8,7 @@
   "scripts": {
     "start": "npm run build -- --serve",
     "stage": "rm -r ./_site || true && npm run build && serve ./_site/",
-    "build": "eleventy --input=../"
+    "build": "eleventy --input=../ --config=./node_modules/@anyblades/eleventy-blades-base/eleventy.config.js"
   },
   "devDependencies": {
     "prettier-plugin-jinja-template": "^2.1.0",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@anyblades/eleventy-blades": "^0.29.0-beta.3",
-    "@anyblades/eleventy-blades-base": "^0.3.2"
+    "@anyblades/eleventy-blades-base": "^0.4.1"
   },
   "=== SITE GLOBALS": "===",
   "site": {
