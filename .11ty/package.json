@@ -8,7 +8,7 @@
     "do"
   ],
   "scripts": {
-    "do": "ELTY_OPTIONS='--input=../ --config=./node_modules/@anyblades/eleventy-blades-base/eleventy.config.js' npm -w do run",
+    "do": "clear; ELTY_OPTIONS='--input=../ --config=./node_modules/@anyblades/eleventy-blades-base/eleventy.config.js' npm -w do run",
     "start": "npm run do -- start",
     "stage": "npm run do -- stage",
     "build": "npm run do -- build"
