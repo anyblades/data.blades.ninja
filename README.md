@@ -62,7 +62,10 @@ Feel the difference:
 
 ---
 
-## <sup>Featured by</sup>
+Featured by:
 
 - https://11ty.blades.ninja/starters/
 - https://11tybundle.dev/starters/
+
+<!--{.columns}-->
+
