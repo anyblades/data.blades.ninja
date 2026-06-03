@@ -13,10 +13,6 @@
     "stage": "npm run do -- stage",
     "build": "npm run do -- build"
   },
-  "devDependencies": {
-    "prettier-plugin-jinja-template": "^2.1.0",
-    "serve": "^14.2.5"
-  },
   "dependencies": {
     "@anyblades/eleventy-blades-base": "^0.4.8"
   },
@@ -42,6 +38,11 @@
       "https://cdn.jsdelivr.net/npm/prismjs@1/plugins/treeview/prism-treeview.min.js"
     ],
     "footer": "Powered by &nbsp;<a href='https://github.com/anyblades'><img src='https://img.shields.io/github/stars/anyblades?logo=_&label=🥷%20Blades'></a>"
+  },
+  "=== DEV ONLY": "===",
+  "devDependencies": {
+    "prettier-plugin-jinja-template": "^2.1.0",
+    "serve": "^14.2.5"
   },
   "=== UNSORTED": "==="
 }
