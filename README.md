@@ -3,7 +3,7 @@ permalink: /
 eleventyNavigation: { key: Home, order: 1 }
 ---
 
-# 🥷 *S*ubtle<sup class="faded"><i class="fa-brands fa-eleventy fa-2xs"></i></sup>
+# 🥷 *S*ubtle<sup class="faded"><sub> <i class="fa-brands fa-eleventy fa-2xs"></i></sub></sup>
 
 ![](https://img.shields.io/github/v/release/anyblades/subtle?label=&color=darkslategray&style=for-the-badge)
 [![](https://img.shields.io/badge/Demo-blue?logo=netlify&logoColor=white&style=for-the-badge)](https://subtle.blades.ninja/)
