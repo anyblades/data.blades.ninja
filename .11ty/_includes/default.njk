@@ -1,5 +1,8 @@
 {% extends 'blades/html.njk' %}
 
+{% set _cdn = 'https://cdn.jsdelivr.net/npm/@anyblades/blades@2/css' if site.prod %}
+{% set site = site | attr_set('styles', [_cdn ~ '/blades.css', _cdn ~ '/blades.ninja.css']) | attr_concat('styles', site.styles) %}
+
 {% set content_for_header %}
   {{ content_for_header | safe }}
   <meta name="generator" content="{{ site.generator }}">
