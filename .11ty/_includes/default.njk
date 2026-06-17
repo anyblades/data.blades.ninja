@@ -1,5 +1,9 @@
 {% extends 'blades/html.njk' %}
 
+{% if not site.prod %}
+  {% set site = site | attr_set('styles', site.styles | join('|') | replace('https://cdn.jsdelivr.net/npm/@anyblades/blades@2/css', '') | split('|')) %}
+{% endif %}
+
 {% set content_for_header %}
   {{ content_for_header | safe }}
   <meta name="generator" content="{{ site.generator }}">
