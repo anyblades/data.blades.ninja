@@ -19,6 +19,12 @@ title: <sup style>2026</sup> Top football g<i>o</i>alscorers <sub style>and thei
     @media (width >= 1024px) { font-size: 125% }
     th, td {
       padding-inline: calc(var(--pico-spacing) / 4);
+      &:first-child {
+        font-size: 75%;
+        opacity: 75%;
+        vertical-align: middle;
+        &::after { content: ":"; vertical-align: baseline }
+      }
       &:not(:first-child) { text-align: center; text-wrap: nowrap }
     }
     /* [NICE] Headers */
@@ -104,9 +110,6 @@ title: <sup style>2026</sup> Top football g<i>o</i>alscorers <sub style>and thei
       &, & ~ tr {
         td:first-child {
           text-align: center;
-          vertical-align: middle;
-          font-style: italic;
-          font-size: 75%;
           opacity: 50%;
         }
       }
@@ -118,7 +121,7 @@ title: <sup style>2026</sup> Top football g<i>o</i>alscorers <sub style>and thei
       &:first-child {
         min-width: 20ch;
         &::before { content: "= SUBTOTALS ="; display: block; font-weight: bold }
-        font-size: 50% !important;
+        font-size: 50%;
         border-left-width: 1px;
         opacity: 100% !important;
       }
