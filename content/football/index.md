@@ -1,10 +1,16 @@
 ---
 eleventyNavigation:
-  key: <i>⚽️</i> Top goalscorers
-title: <sup style>All-time</sup> Top football goalscorers <sub style>and runners-up • as of July 2026</sub>
+  key: <i>⚽️</i> Goalscorers
+title: <sup style>2026</sup> Top football g<i>o</i>alscorers <sub style>and their runners-up • as of July 3</sub>
 ---
 
 ---
+
+<style>h1 i {
+  font-style: normal;
+  font-size: 0;
+  &::after { content: "⚽️"; font-size: 2rem }
+}</style>
 
 | Player                                           | Cristiano <br>Ronaldo                      | Lionel <br>Messi                       | Kylian <br>Mbappé                    | Erling <br>Haaland                     | Lamine <br>Yamal                       |
 | ------------------------------------------------ | ------------------------------------------ | -------------------------------------- | ------------------------------------ | -------------------------------------- | -------------------------------------- |
