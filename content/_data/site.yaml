@@ -1,7 +1,6 @@
 base: https://1000goals.blades.ninja
 title: 1000 Goals Tracker
 brand: 1⚽️⚽️⚽️ <sup class="brand">Goals<br>Tracker</sup>
-header_sitenav_label: ""
 header_links:
   - url: https://github.com/anyblades/1000goals.blades.ninja
     title: <i class="fa-solid fa-laptop-code fa-sm faded"></i>
