@@ -1,16 +1,17 @@
 ---
-title: <sup style>2026</sup> Top football g<b data-i="⚽️"><b>o</b></b>alscorers <sub style>and their runners-up • as of July 5</sub>
+title: The Race for <mark>1000 Goals</mark> <sub style>as of July 5, 2026</sub>
+description: Tracking the top goalscorers in football history and their runners-up.
 ---
 
 ---
 
 <style>
-  /*TODO: move to blades.ninja.css */
+  /*TODO: move to blades.ninja.css
   b[data-i] {
     font-style: normal;
     b { font-size: 0 }
     &::after { content: attr(data-i) }
-  }
+  } */
   /* [CORE] Table styles */
   table {
     display: table !important;
