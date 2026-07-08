@@ -1,15 +1,15 @@
-base: https://1000goals.blades.ninja
+base: https://1k.any.digital
 title: 1000 Goals Tracker
 brand: 1⚽️⚽️⚽️ <sup class="brand">Goals<br>Tracker</sup>
 header_links:
-  - url: https://github.com/anyblades/1000goals.blades.ninja
+  - url: https://github.com/anyblades/1k.any.digital
     title: <i class="fa-solid fa-laptop-code fa-sm faded"></i>
 footer_contents:
   - |-
-    Fully [open-source](//github.com/anyblades/1000goals.blades.ninja) tracker
+    Fully [open-source](//github.com/anyblades/1k.any.digital) tracker
     powered by [Blades CSS](https://blades.ninja/) using [11ty](//11ty.blades.ninja/).
 
-    Content licensed [CC BY-SA 4.0](//github.com/anyblades/1000goals.blades.ninja/blob/main/content/LICENSE.md)
+    Content licensed [CC BY-SA 4.0](//github.com/anyblades/1k.any.digital/blob/main/content/LICENSE.md)
     © 2026 [Anydigital](https://any.digital/)
 head_extras:
   - |-

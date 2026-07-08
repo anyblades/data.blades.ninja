@@ -157,7 +157,7 @@ We DON'T ask for financial support! Instead consider to:
    - https://bsky.app/profile/any.digital
    - https://www.linkedin.com/company/anydigital/
      {.markerless}
-3. Contribute to this project on its [GitHub](https://github.com/anyblades/1000goals.blades.ninja).
+3. Contribute to this project on its [GitHub](https://github.com/anyblades/1k.any.digital).
 
 </article>
 
