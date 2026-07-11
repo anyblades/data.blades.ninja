@@ -45,8 +45,8 @@ description: "Who will cross the bar of 1K goals? Tracking active football legen
 | Golden&nbsp;Shoes                                | **👟4**                                   | <code>**👟6**</code>                   | **👟1**                             | **👟1**                             | —                                     |
 | Debut age                                        | 17y 6m _Sporting vs Inter<br>'02/03_      | 17y 3m _Barça vs Espanyol<br>'04/05_   | 16y 11m _Monaco vs Caen<br>'15/16_  | `15y 9m` _Bryne vs Ranheim<br>2016_ | `15y 9m` _Barça vs Betis<br>'22/23_   |
 | 1st goal                                         | 17y 8m _Sporting vs Moreirense<br>'02/03_ | 17y 10m _Barça vs Albacete<br>'04/05_  | 17y 2m _Monaco vs Troyes<br>'15/16_ | `16y 9m` _Molde vs Volda<br>2017_   | `16y 2m` _Barça vs Granada<br>'23/24_ |
-| Seasons played                                   | `23.9` _'02/03–present_                   | 21.7 _'04/05–present_                  | 10.6 _'15/16–present_               | 10.1 _2016–present_                 | 3.2 _'22/23–present_                  |
-| 1st season {#row-s1}                             | _'02/03_ `5` _∑=5_                        | _'04/05_ 1 _∑=1_                       | _'15/16_ 1 _∑=1_                    | _2016_ 0 _∑=0_                      | _'22/23_ 0 _∑=0_                      |
+| Seasons played {#row-seasons}                    | `23.9` _'02/03–present_                   | 21.7 _'04/05–present_                  | 10.6 _'15/16–present_               | 10.1 _2016–present_                 | 3.2 _'22/23–present_                  |
+| 1st season                                       | _'02/03_ `5` _∑=5_                        | _'04/05_ 1 _∑=1_                       | _'15/16_ 1 _∑=1_                    | _2016_ 0 _∑=0_                      | _'22/23_ 0 _∑=0_                      |
 | 2nd season                                       | _'03/04_ 6 _∑=11_                         | _'05/06_ 8 _∑=9_                       | _'16/17_ `26` _∑=27_                | _2017_ 4 _∑=4_                      | _'23/24_ 9 _∑=9_                      |
 | 3rd season                                       | _'04/05_ 16 _∑=27_                        | _'06/07_ 19 _∑=28_ <br>🌐1             | _'17/18_ `22` _∑=49_                | _2018_ 17 _∑=21_                    | _'24/25_ 19 _∑=28_                    |
 | 4th season                                       | _'05/06_ 14 _∑=41_                        | _'07/08_ 22 _∑=50_                     | _'18/19_ `48` _∑=97_ <br>**🏆**🌐4  | _'19/20_ 44 _∑=65_                  | _'25/26_ 27 _∑=55_ {.bar-es}          |
@@ -102,14 +102,12 @@ description: "Who will cross the bar of 1K goals? Tracking active football legen
     }
     /* [NICE] Goals & seasons */
     tr:has(#row-goals) { font-size: 150% }
-    tr:has(#row-s1) {
-      &, & ~ tr {
-        td:first-child {
-          text-align: center;
-          opacity: 50%;
-        }
-        em { display: inline; vertical-align: text-top }
+    tr:has(#row-seasons) ~ tr {
+      td:first-child {
+        text-align: center;
+        opacity: 50%;
       }
+      em { display: inline; vertical-align: text-top }
     }
     /* [NICE] Subtotals */
     tr:has([class^="vs-"]) td {
