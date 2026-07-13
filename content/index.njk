@@ -72,24 +72,24 @@ description: "Who will cross the bar of 1K goals? Tracking active football legen
 {.striped}
 </figure>
 
-<figure>
+<figure id="chart" class="breakout-item-max">
   <table class="charts-css line multiple show-primary-axis show-4-secondary-axes show-data-axes">
     {%- for s in range(0, player_stats[0].seasons | length) %}
     <tr>
       <th scope="row">{{ s + 1 }}</th>
       {%- for p in range(0, player_stats | length) %}
-      {%- if runn_totals[p][s].goals %}<td style="--start: {{ runn_totals[p][s - 1].goals | d(0) / 1000 }}; --end: {{ runn_totals[p][s].goals / 1000 }}"></td>{% endif %}
+      {%- if runn_totals[p][s].goals %}<td style="--size: {{ runn_totals[p][s].goals / 1000 }}">{{ runn_totals[p][s].goals }}</td>{% endif %}
       {%- endfor %}
     </tr>
     {%- endfor %}
   </table>
-  <br>
-  <ul class="charts-css legend legend-square">
-    {%- for p in range(0, player_stats | length) %}
-    <li>{{ player_stats[p].surname }}</li>
-    {%- endfor %}
-  </ul>
 </figure>
+<br>
+<ul class="charts-css legend legend-square">
+  {%- for p in range(0, player_stats | length) %}
+  <li>{{ player_stats[p].surname }}</li>
+  {%- endfor %}
+</ul>
 {% endrenderTemplate %}
 
 <style>
@@ -128,9 +128,23 @@ description: "Who will cross the bar of 1K goals? Tracking active football legen
       &:first-child { border-left-width: 1px; opacity: 100% !important }
       &:last-child { border-right-width: 1px }
     }
-    tr:has([class="vs-ly"]) td { border-color: goldenrod }
-    tr:has([class="vs-eh"]) td { border-color: red }
-    tr:has([class="vs-lm"]) td { border-color: teal }
+  }
+  .charts-css {
+    --color-1: green;
+    --color-2: skyblue;
+    --color-3: dodgerblue;
+    --color-4: red;
+    --color-5: goldenrod;
+    td {
+      font-size: 25%;
+      &:nth-of-type(10n+1) { --color: var(--color-1) }
+      &:nth-of-type(10n+2) { --color: var(--color-2) }
+      &:nth-of-type(10n+3) { --color: var(--color-3) }
+      &:nth-of-type(10n+4) { --color: var(--color-4) }
+      &:nth-of-type(10n+5) { --color: var(--color-5) }
+      color: var(--color);
+      @media (width < 768px) { color: transparent }
+    }
   }
 </style>
 
