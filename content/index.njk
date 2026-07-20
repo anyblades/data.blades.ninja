@@ -10,21 +10,27 @@ title: The Race for <mark>1000 Goals</mark>
 description: "Who will cross the bar of 1K goals? Tracking active football legends, rising contenders, and their historic season-by-season performance.&nbsp; <i class='faded' style='text-wrap: nowrap'>Updated: July 20, 2026</i>"
 ---
 
+{% set totals = {} %}
+{% for s in range(0, player_stats[0].seasons | length) %}
+  {% for p in range(0, player_stats | length) %}
+    {% set new_totals = {} %}
+    {% for m, val in player_stats[p].seasons[s].metrics %}
+      {% set new_totals = new_totals | attr_set(m, totals[p][s - 1][m] | d(0) + val) %}
+    {% endfor %}
+    {% if 'goals' in new_totals %}
+      {% set totals = totals | attr_set(p, totals[p] | attr_set(s, new_totals) ) %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
 <figure id="chart" class="breakout-item-max">
   <table class="charts-css line multiple show-labels show-data-axes">
-    {% set runn_totals = {} %}
     {% for s in range(0, player_stats[0].seasons | length) %}
     <tr>
       <th scope="row">{{ s + 1 }}</th>
       {% for p in range(0, player_stats | length) %}
-      {% set season = player_stats[p].seasons[s] %}
-      {% set totals = {} %}
-      {% for m, val in season.metrics %}
-        {% set totals = totals | attr_set(m, runn_totals[p][s - 1][m] | d(0) + val) %}
-      {% endfor %}
-      {% set runn_totals = runn_totals | attr_set(p, runn_totals[p] | attr_set(s, totals) ) %}
-      {% if totals.goals and "current" not in season.notes | d('') %}
-      <td style="--start: {{ runn_totals[p][s - 1].goals | d(0) / 1000 }}; --end: {{ totals.goals / 1000 }}">{{ totals.goals }}</td>
+      {% if s < totals[p] | length - 1 %}
+      <td style="--start: {{ totals[p][s - 1].goals | d(0) / 1000 }}; --end: {{ totals[p][s].goals / 1000 }}">{{ totals[p][s].goals }}</td>
       {% endif %}
       {% endfor %}
     </tr>
@@ -110,7 +116,7 @@ description: "Who will cross the bar of 1K goals? Tracking active football legen
       {% set season = player_stats[p].seasons[s] %}
       {% if season %}
       <td>
-        <sup>{{ season.year }}</sup> {{ season.metrics.goals }} {% if runn_totals[p][s].goals %}<sup>∑={{ runn_totals[p][s].goals }}</sup>{% endif %}
+        <sup>{{ season.year }}</sup> {{ season.metrics.goals }} {% if 'goals' in totals[p][s] | d({}) %}<sup>∑={{ totals[p][s].goals }}</sup>{% endif %}
         {% set awards = season.metrics | attr_set('goals', false) | attr_set('🌐', false) %}
         <br><b>{{ awards | dictsort | selectattr('1') | join('', '0') }}</b>{{ '🌐' ~ season.metrics['🌐'] if season.metrics['🌐'] }}
         {% if season.notes %}<sub style>({{ season.notes }})</sub>{% endif %}
@@ -123,7 +129,7 @@ description: "Who will cross the bar of 1K goals? Tracking active football legen
       <td>Subtotals</td>
       {% for p in range(0, player_stats | length) %}
       {% if player_stats[p].seasons[s] %}
-      <td>∑={{ runn_totals[p][s].goals }}</td>
+      <td>∑={{ totals[p][s].goals }}</td>
       {% endif %}
       {% endfor %}
     </tr>
