@@ -11,6 +11,8 @@ description: "Who will cross the bar of 1K goals? Tracking active football legen
 TRAIL_SIZE: 4
 ---
 
+{#TODO: 1) Move data processing to JS file. #}
+
 {% set totals = {} %}
 {% set s_ranks = {} %}
 {% for s in range(0, player_stats[0].seasons | length) %}
@@ -39,7 +41,7 @@ TRAIL_SIZE: 4
       {% if totals[p][s] %}
       {% set trail = s - (totals[p] | length - 1) + TRAIL_SIZE %}
       <td style="--start: {{ totals[p][s - 1].goals | d(0) / 1000 }}; --end: {{ totals[p][s].goals / 1000 }}; {{ '--trail: ' ~ trail if trail > 0 }}">
-        <b class="data {{ 'top' if s_ranks[s][p] == 1 }}" style="opacity: {{ '100%' if trail == TRAIL_SIZE }}; transform: translateY({{ 1 - 4 * (s_ranks[s][p] - 0.7) }}em)">
+        <b class="data {{ 'show' if s_ranks[s][p] == 1 or trail == TRAIL_SIZE }}" style="transform: translateY({{ 1 - 4 * (s_ranks[s][p] - 0.7) }}em)">
           {{ totals[p][s].goals }}{% if s == totals[p] | length - 1 %}<b style="margin-right: -1ch">+</b>{% endif %}
         </b>
       </td>
@@ -74,7 +76,10 @@ TRAIL_SIZE: 4
       .data {
         text-wrap: nowrap; font-weight: 900;
         -webkit-text-stroke: 0.25ch var(--pico-contrast-inverse); paint-order: stroke fill;
-        &.top { @media (width >= 768px) { opacity: calc(40% + 7.5% * pow(2, var(--trail, 0) ) ) } }
+        &.show {
+          opacity: calc(40% + 7.5% * pow(2, var(--trail, 0) ) );
+          @media (width < 768px) { opacity: calc(var(--trail, 0) - {{ TRAIL_SIZE }} + 1) }
+        }
       }
     }
   }
