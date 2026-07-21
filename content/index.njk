@@ -8,7 +8,6 @@ site:
     - https://cdn.jsdelivr.net/npm/charts.css@1/dist/charts.min.css
 title: The Race for <mark>1000 Goals</mark>
 description: "Who will cross the bar of 1K goals? Tracking active football legends, rising contenders, and their historic season-by-season performance.&nbsp; <i class='faded' style='text-wrap: nowrap'>Updated: July 20, 2026</i>"
-TRAIL_SIZE: 4
 ---
 
 {#TODO: 1) Move data processing to JS file. #}
@@ -39,9 +38,11 @@ TRAIL_SIZE: 4
       <th scope="row">{{ s + 1 }}</th>
       {% for p in range(0, player_stats | length) %}
       {% if totals[p][s] %}
-      {% set trail = s - (totals[p] | length - 1) + TRAIL_SIZE %}
-      <td style="--start: {{ totals[p][s - 1].goals | d(0) / 1000 }}; --end: {{ totals[p][s].goals / 1000 }}; {{ '--trail: ' ~ trail if trail > 0 }}">
-        <b class="data {{ 'show' if s_ranks[s][p] == 1 or trail == TRAIL_SIZE }}" style="transform: translateY({{ 1 - 4 * (s_ranks[s][p] - 0.7) }}em)">
+      <td style="--start: {{ totals[p][s - 1].goals | d(0) / 1000 }};
+        --end: {{ totals[p][s].goals / 1000 }};
+        --rank: {{ s_ranks[s][p] }};
+        --trail: {{ (s - (totals[p] | length - 1) + 4) / 4 }}">
+        <b class="data">
           {{ totals[p][s].goals }}{% if s == totals[p] | length - 1 %}<b style="margin-right: -1ch">+</b>{% endif %}
         </b>
       </td>
@@ -72,13 +73,19 @@ TRAIL_SIZE: 4
       &:nth-of-type(10n+5) { --color: var(--color-5) }
       color: var(--color);
 
-      &::before { opacity: calc(20% + 10% * pow(2, var(--trail, 0) ) ) }
-      .data {
+      &::before {
+        opacity: calc(max(20%, 10% * pow(10, var(--trail) ) ) ); /* ease in 20%—100% range */
+      } 
+      .data:not(.does-not-exist) {
         text-wrap: nowrap; font-weight: 900;
+        transform: translateY(calc(-4em * (var(--rank) - 0.7) + 1em) ) !important;
         -webkit-text-stroke: 0.25ch var(--pico-contrast-inverse); paint-order: stroke fill;
-        &.show {
-          opacity: calc(40% + 7.5% * pow(2, var(--trail, 0) ) );
-          @media (width < 768px) { opacity: calc(var(--trail, 0) - {{ TRAIL_SIZE }} + 1) }
+
+        --is-last: calc((var(--trail) - 0.999) * 1000); /* 1 or negative */
+        opacity: calc(var(--is-last) );
+        @media (width >= 768px) {
+          --is-top: calc((var(--rank) - 0.999) * 1000); /* 1 or negative */
+          opacity: calc(max(var(--is-last), var(--is-top) ) );
         }
       }
     }
